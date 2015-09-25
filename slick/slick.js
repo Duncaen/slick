@@ -126,6 +126,7 @@
             _.cssTransitions = false;
             _.hidden = 'hidden';
             _.paused = false;
+            _.hardpaused = false;
             _.positionProp = null;
             _.respondTo = null;
             _.rowCount = 1;
@@ -365,7 +366,7 @@
             clearInterval(_.autoPlayTimer);
         }
 
-        if (_.slideCount > _.options.slidesToShow && _.paused !== true) {
+        if (_.slideCount > _.options.slidesToShow && _.paused !== true && _.hardpaused !== true) {
             _.autoPlayTimer = setInterval(_.autoPlayIterator,
                 _.options.autoplaySpeed);
         }
@@ -1437,6 +1438,7 @@
 
         _.autoPlayClear();
         _.paused = true;
+        _.hardpaused = true;
 
     };
 
@@ -1445,6 +1447,7 @@
         var _ = this;
 
         _.paused = false;
+        _.hardpaused = false;
         _.autoPlay();
 
     };
